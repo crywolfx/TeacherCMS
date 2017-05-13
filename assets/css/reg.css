@@ -1,0 +1,42 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background:  #4d5e70;
+}
+#content{
+	height: 700px;
+	width: 400px;
+	margin: 40px auto;
+	background: #eee;
+	overflow: hidden;
+/*	position: relative;*/
+}
+#content h3{
+	margin: 20px 0;
+	text-align: center;
+}
+#mainForm tr{
+	height: 30px;
+	width: 251px;
+	padding: 5px;
+}
+#mainForm input{
+	height: 26px;
+}
+#mainForm .text{
+	text-align: right;
+	margin-left: 20px;
+}
+table{
+	margin:0 0 0 40px;
+}
+.reg{
+	/*position: absolute;*/
+	width: 180px;
+	height: 40px;
+	margin: 10px 100px;
+	/*right: 60px;*/
+	/*bottom: 20px;*/
+}

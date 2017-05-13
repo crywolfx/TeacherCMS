@@ -1,0 +1,84 @@
+*{
+	padding: 0;
+	margin:0;
+}
+body{
+	background: #4d5e70;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #000;
+	width: 60px;
+	height: 40px;
+	display: block;
+	line-height: 36px;
+}
+#container{
+	width: 400px;
+	height: 300px;
+	background: #eee;
+	margin: 100px auto;
+	border-radius: 4px;
+}
+#tab{
+	border-radius: 4px;
+}
+#tab li{
+	float: left;
+	width: 200px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	background: #eee;
+	border-radius: 4px;
+}
+#tab:after{
+	content: "";
+	display:block;
+	clear: both;
+}
+#tab li.select{
+	background: #fff;
+}
+.content{
+	position: absolute;
+	width: 400px;
+	height: 240px;
+	overflow: hidden;
+	display: none;
+}
+.content div{
+	width: 250px;
+	margin:40px auto;
+}
+.content h3{
+	float: left;
+	line-height: 30px;
+}
+.content input{
+	height: 30px;
+}
+.content table{
+	margin: 40px 50px;
+}
+.content .char{
+	text-align: right;
+}
+.content .reg,.content .log1,.content .log2{
+	width: 60px;
+	height: 40px;
+	position: absolute;
+	bottom: 30px;
+}
+.content .reg{
+	left: 60px;
+}
+.content .log1,.content .log2{
+	right: 60px;
+}
+#container .selected{
+	display: block;
+}
