@@ -32,7 +32,7 @@ class User extends CI_Controller {
 			}	
 	}
 	public function admin()  //管理员登录
-	{    
+	{   
 		if($_SESSION['logged_in']=='TRUE'){
 				$this->load->view('admin');
 			}else{
@@ -136,6 +136,10 @@ class User extends CI_Controller {
 			if($rs){
 			  $res=$this->user_model->get_teacher_res($uname);				
 				 	$this->session->set_userdata($res[0]);
+				 	$user=array(
+					  'logged_in'=>TRUE,
+				     );
+				 	$this->session->set_userdata($user);
 				 	$this->load->view('teacher');  
 			}else{
 				echo "<script>alert('用户名或者密码不正确');</script>";
@@ -152,6 +156,10 @@ class User extends CI_Controller {
 			if($rs){
 			  $res=$this->user_model->get_teacher_res($uname);			
 				 	$this->session->set_userdata($res[0]);
+				 	$user=array(
+					  'logged_in'=>TRUE,
+				     );
+				 	$this->session->set_userdata($user);
 				 	$this->load->view('admin');
 			}else{
 				echo "<script>alert('用户名或者密码不正确');</script>";
@@ -175,19 +183,14 @@ class User extends CI_Controller {
 				$arr2=array('t_pass'=>$newpwd);
 				$rs=$this->user_model->update_new_pwd($arr2,$workid);
 				if($rs){
-					echo "<script>alert('成功修改密码')</script>";
-					echo $newpwd;
+					echo "<script>alert('成功修改密码,请重新登录！')</script>";
+					$this->load->view('login');
 				}
 			}else{
-				echo "<script>alert('旧密码不对,请检查!')</script>";
-				$this->load->view('change');
+				echo "<script>alert('密码错误!登录状态异常，请重新登录!')</script>";
+				$this->load->view('login');
 			}
 		}
-    public function get_teacher_res(){   //获取教师资料
-    	$workid=$_SESSION['t_workid'];
-    	$res=$this->user_model->get_teacher_res($workid);
-    	echo json_encode($res);
-    }
     public function change_teacher_res(){   //修改教师资料
     	$address=$this->input->post('address');//通信地址
 		$height=$this->input->post('height');//身高
@@ -219,4 +222,104 @@ class User extends CI_Controller {
 			echo "success";
 		}		
     }
+    public function get_all_teachers(){   //获取所有老师
+    	   $page=$this->input->post('page');
+    	   $count=$this->user_model->get_all_teachers_count();
+    	   $showPage=$this->input->post('showPage');
+    	   $pageNum=ceil($count/$showPage);
+		   $rs=$this->user_model->get_all_teachers($showPage,($page-1)*$showPage);
+		   if($page==$pageNum){
+		   	   	$data = array('teacher' =>$rs ,'isEnd'=>true,'pageNum'=>$pageNum );
+		   }else{
+		   		$data= array('teacher' =>$rs ,'isEnd'=>false,'pageNum'=>$pageNum );
+		   }
+		    echo json_encode($data);
+		}
+		public function get_all_admins(){  //获取管理员
+		   $page=$this->input->post('page');
+    	   $count=$this->user_model->get_all_admins_count();
+    	   $showPage=$this->input->post('showPage');
+    	   $pageNum=ceil($count/$showPage);
+		   $rs=$this->user_model->get_all_admins($showPage,($page-1)*$showPage);
+		   if($page==$pageNum){
+		   	   	$data = array('admin' =>$rs ,'isEnd'=>true ,'pageNum'=>$pageNum);
+		   }else{
+		   		$data= array('admin' =>$rs ,'isEnd'=>false ,'pageNum'=>$pageNum);
+		   }
+		    echo json_encode($data);
+		}
+	public function set_admin(){  //设置管理员
+		$workid=$this->input->post('workid');
+		$res=$this->user_model->checkAdmin($workid);
+		if($res){
+			echo "fail";
+		}else{
+		$admin = array('t_workid' =>$workid,'t_discribution'=>'管理员');
+		$rs=$this->user_model->set_admin($admin);
+		if($rs){
+			echo "success";
+		 	}
+		}	
+	}
+	public function set_message(){   //发送反馈信息
+		$t_workid=$_SESSION['t_workid'];
+		$t_date=$this->input->post('t_date');
+		$t_call=$this->input->post('t_call');
+		$t_message=$this->input->post('t_message');
+		$arr=array(
+				't_workid'=>$t_workid,
+				't_date'=>$t_date,
+				't_call'=>$t_call,
+				't_message'=>$t_message,
+			);
+		$rs=$this->user_model->set_message($arr);
+		if($rs){
+			echo "success";
+		}
+	}
+	public function get_message(){  //教师获取反馈信息
+		$t_workid=$_SESSION['t_workid'];
+		$rs=$this->user_model->get_message($t_workid);
+		if($rs){
+			echo json_encode($rs);
+		}
+	}
+	public function get_all_message(){  //获取反馈信息
+		   $page=$this->input->post('page');
+    	   $count=$this->user_model->get_all_message_count();
+    	   $showPage=$this->input->post('showPage');
+    	   $pageNum=ceil($count/$showPage);
+		   $rs=$this->user_model->get_all_message($showPage,($page-1)*$showPage);
+		   if($page==$pageNum){
+		   	   	$data = array('message' =>$rs ,'isEnd'=>true ,'pageNum'=>$pageNum);
+		   }else{
+		   		$data= array('message' =>$rs ,'isEnd'=>false ,'pageNum'=>$pageNum);
+		   }
+		    echo json_encode($data);
+		}
+	public function update_message(){   //管理员回复
+		$t_admin=$_SESSION['t_workid'];
+		$t_workid=$this->input->post('t_workid');
+		$t_message=$this->input->post('t_message');
+		$t_answer=$this->input->post('t_answer');
+		$arr = array('t_admin' =>$t_admin ,'t_answer'=>$t_answer);
+		$rs=$this->user_model->update_message($arr,$t_workid,$t_message);
+		if($rs){
+			echo "success";
+		}
+	}
+	public function get_teacher_res(){    //管理员获取老师详细信息
+		$t_workid=$this->input->post('t_workid');
+		$rs=$this->user_model->get_teacher_res2($t_workid);
+		if($rs){
+			echo json_encode($rs);
+		}
+	}
+	public function delAdmin(){  //超级管理员删除普通管理员
+		$t_workid=$this->input->post('t_workid');
+		$rs=$this->user_model->delAdmin($t_workid);
+		if($rs){
+			echo "success";
+		}
+	}
 }

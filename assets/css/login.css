@@ -32,7 +32,7 @@ a{
 	height: 60px;
 	line-height: 60px;
 	text-align: center;
-	background: #eee;
+	background: #fff;
 	border-radius: 4px;
 }
 #tab:after{
@@ -41,7 +41,7 @@ a{
 	clear: both;
 }
 #tab li.select{
-	background: #fff;
+	background: #eee;
 }
 .content{
 	position: absolute;

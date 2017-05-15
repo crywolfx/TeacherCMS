@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="assets/css/flat-ui.min.css" />
         <link rel="stylesheet" type="text/css" href="assets/css/jquery.nouislider.css">
          <script>
-            $(function() {
+             $(function() {
                 $(".meun-item").click(function() {
                     $(".meun-item").removeClass("meun-item-active");
                     $(this).addClass("meun-item-active");
@@ -48,10 +48,10 @@
                     $("#leftMeun").toggleClass("show");
                     $("#rightContent").toggleClass("pd0px");
                 });
-            });
+              });
         </script>
     </head>
-    <body>
+<body>
         <div id="wrap">
             <!-- 左侧菜单栏目块 -->
             <div class="leftMeun" id="leftMeun">
@@ -67,8 +67,9 @@
                 </div>
                 <div class="meun-title">账号管理</div>
                 <div class="meun-item meun-item-active" id="refresh" href="#stud" aria-controls="stud" role="tab" data-toggle="tab"><img src="assets/img/icon_card_grey.png">个人信息</div>
-                <div class="meun-item" href="#change" aria-controls="change" role="tab" data-toggle="tab"><img src="assets/img/icon_card_grey.png">修改信息</div>
-                <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="assets/img/icon_change_grey.png">修改密码</div>
+                <div class="meun-item" href="#change" aria-controls="change" role="tab" data-toggle="tab"><img src="assets/img/changeFile.png">修改信息</div>
+                <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="assets/img/chngePwd.png">修改密码</div>
+                <div class="meun-item" href="#feedback" aria-controls="feedback" role="tab" data-toggle="tab"><img src="assets/img/xinxifankui.png">意见反馈</div>
             </div>
             <!-- 右侧具体内容栏目 -->
             <div id="rightContent">
@@ -81,8 +82,6 @@
             <div role="tabpanel" class="tab-pane active" id="stud">
                 <div class="check-div form-inline">
                     <div class="col-xs-5">
-                        <input type="text" class=" form-control input-sm" placeholder="输入文字搜索" style="	!height: 40px!important;">
-                        <button class="btn btn-white btn-xs ">查 询 </button>
                     </div>
                 </div>
                 <div class="data-div">
@@ -174,7 +173,7 @@
                             <div class="col-md-2 col-xs-2 ">
                                 最高学位： <?php echo $_SESSION['t_qualification'];?>
                             </div>
-                            <div class="col-md-2 col-xs-2">
+                            <div class="col-md-3 col-xs-3">
                                 工作时间： <?php echo $_SESSION['t_inworkyear'];?>
                             </div>
                             <div class="col-md-6 col-xs-6">
@@ -202,15 +201,11 @@
                     </div>
 
                 </div>
-                <!-- /.modal -->
-				<!-- <button id="refresh" style="display: block;position: fixed;left: 50%;width: 100px;">点击刷新查看最新信息</button> -->
             </div>
             <!--人员信息修改模块-->
             <div role="tabpanel" class="tab-pane" id="change">
                 <div class="check-div form-inline">
                     <div class="col-xs-5">
-                        <input type="text" class=" form-control input-sm" placeholder="输入文字搜索" style="	!height: 40px!important;">
-                        <button class="btn btn-white btn-xs ">查 询 </button>
                     </div>
                 </div>
                 <div class="data-div">
@@ -225,19 +220,19 @@
                         		
                             </div>
                             <div class="col-md-2 col-xs-2">
-							 * 工号：<?php echo $_SESSION['t_workid'];?>
+							 <span style="color: red">*</span>工号：<?php echo $_SESSION['t_workid'];?>
                             </div>
                             <div class="col-md-2 col-xs-2">
-                              * 姓名：<?php echo $_SESSION['t_name'];?>
+                             <span style="color: red">*</span>姓名：<?php echo $_SESSION['t_name'];?>
                             </div>
                             <div class="col-md-2 col-xs-2">
-                                * 性别： <?php echo $_SESSION['t_sex'];?>
+                            <span style="color: red">*</span>性别： <?php echo $_SESSION['t_sex'];?>
                             </div>
                             <div class="col-md-3 col-xs-3">
-                                * 出身年月： <?php echo $_SESSION['t_both'];?>
+                             <span style="color: red">*</span>出身年月： <?php echo $_SESSION['t_both'];?>
                             </div>
                             <div class="col-md-2 col-xs-2">
-                                * 民族： <?php echo $_SESSION['t_nationality'];?>
+                             <span style="color: red">*</span>民族： <?php echo $_SESSION['t_nationality'];?>
                             </div>
                         </div>
                         <div class="row">
@@ -245,7 +240,7 @@
                         		
                             </div>
                             <div class="col-md-5 col-xs-5">
-                                * 身份证号码：<?php echo $_SESSION['t_idcard'];?>
+                            <span style="color: red">*</span>身份证号码：<?php echo $_SESSION['t_idcard'];?>
                             </div>
                             <div class="col-md-5 col-xs-5">
                                 通信地址：  <input style="height: 30px;width: 170px;border: 0;" type="text" value="<?php echo $_SESSION['t_calladderss'];?>" class="updateForm" name="address" placeholder="<?php echo $_SESSION['t_calladderss'];?>">
@@ -304,8 +299,8 @@
 												<option value="其他">其他</option>
 											</select>
                             </div>
-                            <div class="col-md-2 col-xs-2">
-                               *  工作时间： <?php echo $_SESSION['t_inworkyear'];?>
+                            <div class="col-md-3 col-xs-3">
+                            <span style="color: red">*</span>工作时间： <?php echo $_SESSION['t_inworkyear'];?>
                             </div>
                             <div class="col-md-6 col-xs-6">
                                 工作单位： <input class="updateForm" style="height: 30px;width: 160px;border: 0;" type="text" name="school"  value="<?php echo $_SESSION['t_school'];?>" placeholder="<?php echo $_SESSION['t_school'];?>">
@@ -370,69 +365,91 @@
                         <div class="form-group">
                             <label for="sKnot" class="col-xs-4 control-label">原密码：</label>
                             <div class="col-xs-5">
-                                <input type="password" name="oldpwd" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                                <input type="password" name="oldpwd"  class="form-control input-sm duiqi oldpwd" id="sKnot" placeholder="" style="margin-top: 7px;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="sKnot" class="col-xs-4 control-label">新密码：</label>
                             <div class="col-xs-5">
-                                <input type="password" name="newpwd" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                                <input type="password" name="newpwd"  class="form-control input-sm duiqi newpwd" id="sKnot" placeholder="" style="margin-top: 7px;">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="sKnot" class="col-xs-4 control-label">重复密码：</label>
                             <div class="col-xs-5">
-                                <input type="password" name="renewpwd" class="form-control input-sm duiqi" id="sKnot" placeholder="" style="margin-top: 7px;">
+                                <input type="password" name="renewpwd"  class="form-control input-sm duiqi renewpwd" id="sKnot" placeholder="" style="margin-top: 7px;">
+                                 <p id="tip" style="color: red;margin-right: 20px;position: absolute;display: none;">两次密码不一致</p>
                             </div>
                         </div>
                         <div class="form-group text-right">
                             <div class="col-xs-offset-4 col-xs-5" style="margin-left: 169px;">
                                 <button type="reset" class="btn btn-xs btn-white">取 消</button>
-                                <button type="submit" class="btn btn-xs btn-green">保存</button>
+                                <button type="submit" class="btn btn-xs btn-green save">保存</button>
                             </div>
                         </div>
                     </form>
                 </div>
 
             </div>
+            <!-- 意见反馈模块 -->
+            <div role="tabpanel" class="tab-pane" id="feedback">
+                <div class="check-div form-inline">
+                    <div class="col-xs-5">
+                    </div>
+                </div>
+                <div class="data-div">
+                    <div class="row tableHeader">
+                        <div class="col-xs-11 col-md-11" style="text-align: center">
+                                    往期意见
+                        </div>
+                    </div>
+                    <div class="tablebody" id="msgShow">
+                    <script type="text/html" id="msg">
+                            <div style="background: #eee;width: 800px; margin: 0 auto;word-wrap:break-word; word-break:break-all; ">
+                                <ul>
+                                    <li>日期:{{t_date}}</li>
+                                    <li>内容:{{t_message}}</li>
+                                    <li>管理员工号:{{t_admin}}</li>
+                                    <li>管理员反馈:{{t_answer}}</li>
+                                </ul>
+                            </div>
+                    </script>
+                    </div>
+                    <div class="row tableHeader">
+                        <div class="col-xs-11 " style="text-align: center">
+                                 反馈意见
+                        </div>
+                    </div>
+                    <div class="tablebody">
+                        <div style="background: #eee;width: 800px; margin: 0 auto;">
+                                <table>
+                                    <thead>
+                                    </thead>
+                                    <tbody> 
+                                        <tr>
+                                            <td style="text-align: right;">日期:</td>
+                                            <td><input style="border: 0;background: #eee;margin-left: 20px;" class="getMsg" type="text" name="t_date" id="dateInput" disabled="true"></td>
+                                            <td style="text-align: right;">联系方式:</td>
+                                            <td><input style="border: 0;background: #eee;margin-left: 20px;" class="getMsg" type="number" name="t_call"></td>
+                                        </tr>
+                                        <tr>
+                                            <textarea class="getMsg" placeholder="在此处填写反馈信息，不得超过200字哦" cols="30" maxlength="200" rows="5" style="width: 800px;border: 0;background: #eee" name="t_message"></textarea>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                </div>
+                <button id="feedbackBtn" style="display: block;position: fixed;left: 50%;width: 100px;">提交反馈信息</button>
+            </div>
         </div>
-    </div>
-</div>
 
 <script type="text/javascript" src="assets/js/jquery.min.js"></script>
 <script src="assets/js/jquery.nouislider.js"></script>	
 <script type="text/javascript" src="assets/js/teacher.js"></script>
+<script src="assets/js/template.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
-<script>
-  //min/max slider
-  function huadong(my, unit, def, max) {
-      $(my).noUiSlider({
-          range: [0, max],
-          start: [def],
-          handles: 1,
-          connect: 'upper',
-          slide: function() {
-              var val = Math.floor($(this).val());
-              $(this).find(".noUi-handle").text(
-                      val + unit
-                      );
-              console.log($(this).find(".noUi-handle").parent().parent().html());
-          },
-          set: function() {
-              var val = Math.floor($(this).val());
-              $(this).find(".noUi-handle").text(
-                      val + unit
-                      );
-          }
-      });
-      $(my).val(def, true);
-  }
-  huadong('.slider-minmax1', "分钟", "5", 30);
-  huadong('.slider-minmax2', "分钟", "6", 15);
-  huadong('.slider-minmax3', "分钟", "10", 60);
-  huadong('.slider-minmax4', "次", "2", 10);
-  huadong('.slider-minmax5', "天", "3", 7);
-  huadong('.slider-minmax6', "天", "8", 10);
-</script>
+<script src="assets/js/changePwd.js"></script>
+<script type="text/javascript" src="assets/js/message.js"></script>
 </body>
 </html>
