@@ -72,7 +72,9 @@
                 </div>
                 <div class="meun-title">账号管理</div>
                 <!-- <div class="meun-item meun-item-active" href="#sour" aria-controls="sour" role="tab" data-toggle="tab"><img src="assets/img/icon_source.png">资源管理</div> -->
-                <div class="meun-item meun-item-active" href="#char" id="adminManige" aria-controls="char" role="tab" data-toggle="tab"><img src="assets/img/admin.png">权限管理</div>
+                <div class="meun-item meun-item-active" id="refresh" href="#stud" aria-controls="stud" role="tab" data-toggle="tab"><img src="assets/img/icon_card_grey.png">个人信息</div>
+                <div class="meun-item" href="#change" aria-controls="change" role="tab" data-toggle="tab"><img src="assets/img/changeFile.png">修改信息</div>
+                <div class="meun-item" href="#char" id="adminManige" aria-controls="char" role="tab" data-toggle="tab"><img src="assets/img/admin.png">权限管理</div>
                 <div class="meun-item" href="#user" aria-controls="user" role="tab" data-toggle="tab" id="userManige"><img src="assets/img/teacher.png">教师管理</div>
                 <div class="meun-item" href="#feedback" aria-controls="feedback" role="tab" data-toggle="tab" id="messageManige"><img src="assets/img/xinxifankui.png">信息反馈</div>
                 <div class="meun-item" href="#chan" aria-controls="chan" role="tab" data-toggle="tab"><img src="assets/img/chngePwd.png">修改密码</div>
@@ -84,8 +86,285 @@
                 </a>
                 <!-- Tab panes -->
                      <div class="tab-content">
+                      <!--人员管理模块-->
+            <div role="tabpanel" class="tab-pane active" id="stud">
+                <div class="check-div form-inline">
+                    <div class="col-xs-5">
+                    </div>
+                </div>
+                <div class="data-div">
+                    <div class="row tableHeader">
+                        <div class="col-xs-11 " style="text-align: center">
+                            基本信息
+                        </div>
+                    </div>
+                    <div class="tablebody">
+
+                        <div class="row">
+                            <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-2 col-xs-2 ">
+                                工号：<?php echo $_SESSION['t_workid'];?>
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                                姓名：<?php echo $_SESSION['t_name'];?>
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                                性别： <?php echo $_SESSION['t_sex'];?>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                出身年月： <?php echo $_SESSION['t_both'];?>
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                                民族： <?php echo $_SESSION['t_nationality'];?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                                身份证号码：<?php echo $_SESSION['t_idcard'];?>
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                                通信地址： <?php echo $_SESSION['t_calladderss'];?>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                身高： <?php echo $_SESSION['t_height'];?>cm
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                体重： <?php echo $_SESSION['t_weight'];?>kg
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                健康状况： <?php echo $_SESSION['t_health'];?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                                联系电话： <?php echo $_SESSION['t_call'];?>
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                                联系邮箱： <?php echo $_SESSION['t_email'];?>
+                            </div>
+                            <div class="col-xs-2">
+                                
+                            </div>
+                            <div class="col-xs-2">
+                                
+                            </div>
+                            <div class="col-xs-2">
+                                
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row tableHeader">
+                        <div class="col-xs-11 " style="text-align: center">
+                            职业信息
+                        </div>
+                    </div>
+                    <div class="tablebody">
+
+                        <div class="row">
+                            <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-2 col-xs-2 ">
+                                最高学位： <?php echo $_SESSION['t_qualification'];?>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                工作时间： <?php echo $_SESSION['t_inworkyear'];?>
+                            </div>
+                            <div class="col-md-6 col-xs-6">
+                                工作单位： <?php echo $_SESSION['t_school'];?>
+                            </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                工作部门： <?php echo $_SESSION['t_department'];?>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                职称： <?php echo $_SESSION['t_title'];?>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                政治面貌： <?php echo $_SESSION['t_politics'];?>
+                            </div>
+                            <div class="col-xs-2">
+                                
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!--人员信息修改模块-->
+            <div role="tabpanel" class="tab-pane" id="change">
+                <div class="check-div form-inline">
+                    <div class="col-xs-5">
+                    </div>
+                </div>
+                <div class="data-div">
+                    <div class="row tableHeader">
+                        <div class="col-xs-11 col-md-11" style="text-align: center">
+                            基本信息
+                        </div>
+                    </div>
+                    <div class="tablebody">
+                        <div class="row">
+                            <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                             <span style="color: red">*</span>工号：<?php echo $_SESSION['t_workid'];?>
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                             <span style="color: red">*</span>姓名：<?php echo $_SESSION['t_name'];?>
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                            <span style="color: red">*</span>性别： <?php echo $_SESSION['t_sex'];?>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                             <span style="color: red">*</span>出身年月： <?php echo $_SESSION['t_both'];?>
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                             <span style="color: red">*</span>民族： <?php echo $_SESSION['t_nationality'];?>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                            <span style="color: red">*</span>身份证号码：<?php echo $_SESSION['t_idcard'];?>
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                                通信地址：  <input style="height: 30px;width: 170px;border: 0;" type="text" value="<?php echo $_SESSION['t_calladderss'];?>" class="updateForm" name="address" placeholder="<?php echo $_SESSION['t_calladderss'];?>">
+                            </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                身高： <input style="height: 30px;width: 30px;border: 0;" type="text" value="<?php echo $_SESSION['t_height'];?>" name="height" class="updateForm" placeholder="<?php echo $_SESSION['t_height'];?>">cm
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                体重：  <input style="height: 30px;width: 30px;border: 0;" type="text" value="<?php echo $_SESSION['t_weight'];?>" name="weight" class="updateForm" placeholder="<?php echo $_SESSION['t_weight'];?>">kg
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                健康状况：                       <select style="border: 0" class="updateForm" name="health" value="<?php echo $_SESSION['t_health'];?>">
+                                                                        <option value="<?php echo $_SESSION['t_health'];?>"><?php echo $_SESSION['t_health'];?></option>
+                                                                        <option value="良好">良好</option>
+                                                                        <option value="一般">一般</option>
+                                                                        <option value="差">差</option>
+                                                                    </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                         <div class="col-md-1 ">
+                                
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                                联系电话：<input class="updateForm" style="height: 30px;width: 160px;border: 0;" type="text" value="<?php echo $_SESSION['t_call'];?>" name="call" placeholder="<?php echo $_SESSION['t_call'];?>">
+                            </div>
+                            <div class="col-md-5 col-xs-5">
+                                联系邮箱：<input class="updateForm" style="height: 30px;width: 160px;border: 0;" type="text" value="<?php echo $_SESSION['t_email'];?>" name="email" placeholder="<?php echo $_SESSION['t_email'];?>">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row tableHeader">
+                        <div class="col-xs-11 " style="text-align: center">
+                            职业信息
+                        </div>
+                    </div>
+                    <div class="tablebody">
+
+                        <div class="row">
+                        <div class="col-md-1">
+                                
+                            </div>
+                            <div class="col-md-2 col-xs-2">
+                                最高学位： <select class="updateForm" style="border: 0" name="qualification" value="<?php echo $_SESSION['t_qualification'];?>">
+                                                <option value="<?php echo $_SESSION['t_qualification'];?>"><?php echo $_SESSION['t_qualification'];?></option>
+                                                <option value="大专">大专</option>
+                                                <option value="本科">本科</option>
+                                                <option value="硕士">硕士</option>
+                                                <option value="博士">博士</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                            <span style="color: red">*</span>工作时间： <?php echo $_SESSION['t_inworkyear'];?>
+                            </div>
+                            <div class="col-md-6 col-xs-6">
+                                工作单位： <input class="updateForm" style="height: 30px;width: 160px;border: 0;" type="text" name="school"  value="<?php echo $_SESSION['t_school'];?>" placeholder="<?php echo $_SESSION['t_school'];?>">
+                            </div>
+                          </div>
+                       <div class="row">
+                        <div class="col-md-1">
+                                
+                        </div>
+                            <div class="col-md-3 col-xs-3">
+                                工作部门： <select class="updateForm" style="border: 0" name="department" value="<?php echo $_SESSION['t_department'];?>">
+                             <option value="<?php echo $_SESSION['t_department'];?>"><?php echo $_SESSION['t_department'];?></option>   
+                            <option value="教务处">教务处</option>
+                            <option value="后勤部">后勤部</option>
+                            <option value="办公室">办公室</option>
+                            <option value="公安部">公安部</option>
+                            <option value="宿管科">宿管科</option>
+                            <option value="组织部">组织部</option>
+                            <option value="学生处">学生处</option>
+                            <option value="学工部">学工部</option>
+                            <option value="宣传部">宣传部</option>
+                            <option value="校医院">校医院</option>
+                            <option value="档案馆">档案馆</option>
+                            <option value="图书馆">图书馆</option>
+                            <option value="就业指导办">就业指导办</option>
+                            <option value="其他">其他</option>
+                            </select>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                职称： <select class="updateForm" style="border: 0" name="title" value="<?php echo $_SESSION['t_title'];?>">
+                                 <option value="<?php echo $_SESSION['t_title'];?>"><?php echo $_SESSION['t_title'];?></option>
+                                <option value="助教">助教</option>
+                                <option value="讲师">讲师</option>
+                                <option value="副教授">副教授</option>
+                                <option value="教授">教授</option>
+                                <option value="其他">其他</option>
+                            </select>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                政治面貌： <select class="updateForm" style="border: 0" name="politics" value="<?php echo $_SESSION['t_politics'];?>">
+                                <option value="<?php echo $_SESSION['t_politics'];?>"><?php echo $_SESSION['t_politics'];?></option>
+                                <option value="中共党员">中共党员</option>
+                                <option value="共青团员">共青团员</option>
+                                <option value="人民群众">人民群众</option>
+                                <option value="其他">其他</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <input style="display: block;position: fixed;left: 50%;width: 100px;" type="submit" value="提交修改"> -->
+                <button id="changeForm" style="display: block;position: fixed;left: 50%;width: 100px;">提交修改</button>
+            </div>
                     <!-- 权限管理模块 -->
-                    <div role="tabpanel" class="tab-pane active" id="char">
+            <div role="tabpanel" class="tab-pane" id="char">
 
                         <div class="check-div">
                             <!-- <button class="btn btn-yellow btn-xs" data-toggle="modal" data-target="#addChar">添加权限</button> -->
@@ -136,9 +415,9 @@
 		                            </div>
 	                        	</div>
 								</script>
-                    </div>
+                 </div>
 
-                </div>
+                  </div>
                 <!--页码块-->
                 <footer class="footer">
                     <ul class="pagination">
@@ -810,6 +1089,7 @@
 <script src="assets/js/admin.js"></script>
 <script src="assets/js/template.js"></script>
 <script src="assets/js/changePwd.js"></script>
+<script type="text/javascript" src="assets/js/teacher.js"></script>
 </body>
 
 </html>

@@ -19,11 +19,11 @@
                     </tr>
                     <tr>
                         <td class="char">密码:</td>
-                        <td><input type="password" id="upass" name="upass"></td>
+                        <td><input type="password" minlength="6" placeholder="最低不能小于6位" id="upass" name="upass"></td>
                     </tr>
                     <tr>
                         <td class="char">确认密码:</td>
-                        <td><input type="password" id="rpass" name="rpass"></td>
+                        <td><input type="password" minlength="6" placeholder="最低不能小于6位" id="rpass" name="rpass"></td>
                     </tr>
                 </tbody>
             </table>

@@ -128,24 +128,24 @@ class User extends CI_Controller {
 			redirect('user/index');
 		}
 	}
-	public function teacher_login(){     //教师验证登录
-			$uname=$this->input->post('user');  //workid
-			$upass=$this->input->post('pass');
-			$arr = array('t_workid' =>$uname,'t_pass'=>$upass);
-			$rs=$this->user_model->checkLogin($arr);
-			if($rs){
-			  $res=$this->user_model->get_teacher_res($uname);				
-				 	$this->session->set_userdata($res[0]);
-				 	$user=array(
-					  'logged_in'=>TRUE,
-				     );
-				 	$this->session->set_userdata($user);
-				 	$this->load->view('teacher');  
-			}else{
-				echo "<script>alert('用户名或者密码不正确');</script>";
-				$this->load->view('login');
-			}
-	}
+	// public function teacher_login(){     //教师验证登录   pass掉
+	// 		$uname=$this->input->post('user');  //workid
+	// 		$upass=$this->input->post('pass');
+	// 		$arr = array('t_workid' =>$uname,'t_pass'=>$upass);
+	// 		$rs=$this->user_model->checkLogin($arr);
+	// 		if($rs){
+	// 		  $res=$this->user_model->get_teacher_res($uname);				
+	// 			 	$this->session->set_userdata($res[0]);
+	// 			 	$user=array(
+	// 				  'logged_in'=>TRUE,
+	// 			     );
+	// 			 	$this->session->set_userdata($user);
+	// 			 	$this->load->view('teacher');  
+	// 		}else{
+	// 			echo "<script>alert('用户名或者密码不正确');</script>";
+	// 			$this->load->view('login');
+	// 		}
+	// }
 	public function admin_login(){    //管理员登录
 		$uname=$this->input->post('user2');
 		$upass=$this->input->post('pass2');
@@ -154,20 +154,42 @@ class User extends CI_Controller {
 			$arr = array('t_workid' =>$uname,'t_pass'=>$upass);
 			$rs=$this->user_model->checkLogin($arr);
 			if($rs){
-			  $res=$this->user_model->get_teacher_res($uname);			
+			  $res=$this->user_model->get_teacher_res($uname);
+			  if($res[0][t_name]==NULL){
+			  			echo "<script>alert('您还没有填写详细信息，点击填写详细信息！');</script>";
+						$this->load->view('reg');
+			  		}else{				
 				 	$this->session->set_userdata($res[0]);
 				 	$user=array(
 					  'logged_in'=>TRUE,
 				     );
 				 	$this->session->set_userdata($user);
 				 	$this->load->view('admin');
+				 }
 			}else{
 				echo "<script>alert('用户名或者密码不正确');</script>";
 				$this->load->view('login');
 			}
 		}else{
-			echo "<script>alert('你不是管理员');</script>";
-			$this->load->view('login');
+			$arr = array('t_workid' =>$uname,'t_pass'=>$upass);
+			$rs=$this->user_model->checkLogin($arr);
+			if($rs){
+			  $res=$this->user_model->get_teacher_res($uname);		
+				 	$this->session->set_userdata($res[0]);
+				 	$user=array(
+					  'logged_in'=>TRUE,
+				     );
+				 	$this->session->set_userdata($user);
+				 if($res[0][t_name]==NULL){
+			  			echo "<script>alert('您还没有填写详细信息，点击填写详细信息！');</script>";
+						$this->load->view('reg');
+			  		}else{
+				 	$this->load->view('teacher');
+				 }
+			}else{
+				echo "<script>alert('用户名或者密码不正确');</script>";
+				$this->load->view('login');
+			}
 		}
 	}
 	public function do_change_pwd(){     //修改密码操作

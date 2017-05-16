@@ -36,7 +36,7 @@
 					</tr>
 					<tr>
 						<td class="text">身份证号:</td>
-						<td><input type="text"   name="IDCard"></td>
+						<td><input type="text" pattern="^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$"  name="IDCard"></td>
 					</tr>
 					<tr>
 						<td class="text">通信地址:</td>
@@ -66,11 +66,11 @@
 					</tr>
 					<tr>
 						<td class="text">联系电话:</td>
-						<td><input type="number" name="call"></td>
+						<td><input type="tel"  name="call"></td>
 					</tr>
 					<tr>
 						<td class="text">邮箱:</td>
-						<td><input type="text" placeholder="xx@xx.com" pattern="^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$" name="email"></td>
+						<td><input type="email" placeholder="xx@xx.com" name="email"></td>
 					</tr>
 					<tr>
 						<td class="text">入职年份:</td>
@@ -146,11 +146,22 @@
 <script type="text/javascript">
 	$(function(){
 		$('.reg').on('click',function(){
-			if(!$('input').val()){
-				alert("请检查未填项");
+			// if(!$('input').val()){
+			// 	alert("请检查未填项");
+			// 	return false;
+			// }
+			var flag=true;
+			for(var i=0;i<$('input').length;i++){
+				if(!$($('input')[i]).val()){
+					flag=false;
+					break;
+				}
+			}
+			if(!flag){
+				alert("请检查未填项或未按要求填写项目")
 				return false;
 			}
-		})
+		});
 	})
 </script>
 </body>
